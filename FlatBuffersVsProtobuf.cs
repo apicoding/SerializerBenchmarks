@@ -4,6 +4,7 @@ using SerializerBenchmarks.BinPackSerializer;
 using SerializerBenchmarks.FlatBuffersSerializer;
 using SerializerBenchmarks.ProtobufSerializer;
 using SerializerBenchmarks.Utf8JsonSerializer;
+using SerializerBenchmarks.ZeroFormatterSerializer;
 
 namespace SerializerBenchmarks;
 
@@ -15,6 +16,7 @@ public class FlatBuffers_Vs_Protobuf_Vs_Utf8Json
     private MessagePb _messagePb;
     private MessageUj _messageUj;
     private MessageBin _messageBin;
+    private MessageZf _messageZf;
 
     [GlobalSetup]
     public void Setup()
@@ -72,6 +74,19 @@ public class FlatBuffers_Vs_Protobuf_Vs_Utf8Json
                 { "key2", "value2" }
             }
         };
+
+        _messageZf = new()
+        {
+            Id = 1,
+            Source = "XLTST",
+            Symbol = "EUR=",
+
+            Body = new List<FieldZf>
+            {
+                new() { Name = "key1", Value = "value1" },
+                new() { Name = "key2", Value = "value2" }
+            }
+        };
     }
 
     [Benchmark]
@@ -85,4 +100,7 @@ public class FlatBuffers_Vs_Protobuf_Vs_Utf8Json
 
     [Benchmark]
     public byte[] BinSerialize() => BinPackSerializer.BinPackSerializer.Serialize(_messageBin);
+
+    [Benchmark]
+    public byte[] ZeroSerialize() => ZeroFormatterSerializerHelper.Serialize(_messageZf);
 }
