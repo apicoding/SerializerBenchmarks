@@ -1,7 +1,9 @@
 ﻿using FlatSharp.Attributes;
 
+namespace SerializerBenchmarks.FlatBuffersSerializer;
+
 [FlatBufferTable]
-public class Field : object
+public class FieldFb : object
 {
     [FlatBufferItem(0)]
     public virtual string Name { get; set; }

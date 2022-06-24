@@ -1,20 +1,47 @@
-﻿
-using SerializerBenchmarks.FlatBuffersSerializer;
+﻿using BenchmarkDotNet.Running;
+using SerializerBenchmarks;
 
-Message message = new()
+var summary = BenchmarkRunner.Run<FlatBuffersVsProtobuf>();
+
+/*
+// FlatBuffers sample
+MessageFb messageFb = new()
 {
+    Id = 1,
     Source = "XLTST",
     Symbol = "EUR=",
 
-    Body = new List<Field>
+    Body = new List<FieldFb>
     {
         new() { Name = "key1", Value = "value1" },
         new() { Name = "key2", Value = "value2" }
     }
 };
 
-byte[] fbBuffer = FlatBuffersTool.Serialize(message);
+byte[] bufferFb = FlatBuffersSerializer.Serialize(messageFb);
+var newMessageFb = FlatBuffersSerializer.Deserialize(bufferFb);
 
-var messageDeser = FlatBuffersTool.Deserialize(fbBuffer);
+Console.WriteLine($"FlatBuffers done");
 
-Console.WriteLine("Done");
+
+// Protobuf-net sample
+MessagePb messagePb = new()
+{
+    Id = 1,
+    Source = "XLTST",
+    Symbol = "EUR=",
+
+    Body = new Dictionary<string, string>()
+    {
+        { "key1", "value1" },
+        { "key2", "value2" }
+    }
+};
+
+
+byte[] bufferPb = ProtobufSerializer.Serialize(messagePb);
+var newMessagePb = ProtobufSerializer.Deserialize(bufferPb);
+*/
+
+Console.WriteLine($"FlatBuffers done");
+

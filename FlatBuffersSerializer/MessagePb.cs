@@ -1,7 +1,9 @@
 ﻿using FlatSharp.Attributes;
 
+namespace SerializerBenchmarks.FlatBuffersSerializer;
+
 [FlatBufferTable]
-public class Message : object
+public class MessageFb : object
 {
     [FlatBufferItem(0)]
     public virtual int Id { get; set; }
@@ -13,5 +15,5 @@ public class Message : object
     public virtual string Symbol { get; set; }
 
     [FlatBufferItem(3)]
-    public virtual IList<Field> Body { get; set; }
+    public virtual IList<FieldFb> Body { get; set; }
 }
