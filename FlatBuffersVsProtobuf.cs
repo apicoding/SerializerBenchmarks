@@ -5,7 +5,7 @@ using SerializerBenchmarks.ProtobufSerializer;
 
 namespace SerializerBenchmarks;
 
-[SimpleJob(RuntimeMoniker.CoreRt60)]
+[SimpleJob(RuntimeMoniker.Net60)]
 [RPlotExporter]
 public class FlatBuffersVsProtobuf
 {
