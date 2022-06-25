@@ -171,5 +171,8 @@ namespace SerializerBenchmarks
 
         [Benchmark]
         public string CustSerialize() => CustomSerializer.CustomSerializer.Serialize(_messageCust);
+
+        [Benchmark]
+        public string CustSerialize2() => CustomSerializer.CustomSerializer.Serialize2(_messageCust);
     }
 }

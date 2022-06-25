@@ -2,11 +2,10 @@
 using SerializerBenchmarks;
 using SerializerBenchmarks.CustomSerializer;
 
-// Custom
 //MessageCust message = new()
 //{
-//    Body = new Dictionary<string, string>()
-//    {
+//   Body = new Dictionary<string, string>()
+//   {
 //        { "key1", "value1" },
 //        { "key2", "value2" },
 //        { "key3", "value1" },
@@ -17,10 +16,10 @@ using SerializerBenchmarks.CustomSerializer;
 //        { "key8", "value2" },
 //        { "key9", "value1" },
 //        { "key10", "value2" }
-//    }
+//   }
 //};
 
-//var ser = CustomSerializer.Serialize(message);
+//var ser = CustomSerializer.Serialize2(message);
 
 //var newMessage = CustomSerializer.Deserialize(ser);
 
