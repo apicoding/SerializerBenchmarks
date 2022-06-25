@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
+using SerializerBenchmarks.ApexSerializerHelper;
 using SerializerBenchmarks.BinPackSerializer;
 using SerializerBenchmarks.FlatBuffersSerializer;
 using SerializerBenchmarks.ProtobufSerializer;
@@ -17,6 +18,7 @@ public class FlatBuffers_Vs_Protobuf_Vs_Utf8Json
     private MessageUj _messageUj;
     private MessageBin _messageBin;
     private MessageZf _messageZf;
+    private MessageAp _messageAp;
 
     [GlobalSetup]
     public void Setup()
@@ -87,6 +89,22 @@ public class FlatBuffers_Vs_Protobuf_Vs_Utf8Json
                 new() { Name = "key2", Value = "value2" }
             }
         };
+
+        // Apex
+        ApexSerializerHelper.ApexSerializerHelper.Initialize();
+
+        _messageAp = new()
+        {
+            Id = 1,
+            Source = "XLTST",
+            Symbol = "EUR=",
+
+            Body = new Dictionary<string, string>()
+            {
+                { "key1", "value1" },
+                { "key2", "value2" }
+            }
+        };
     }
 
     [Benchmark]
@@ -103,4 +121,7 @@ public class FlatBuffers_Vs_Protobuf_Vs_Utf8Json
 
     [Benchmark]
     public byte[] ZeroSerialize() => ZeroFormatterSerializerHelper.Serialize(_messageZf);
+
+    [Benchmark]
+    public byte[] ApexSerialize() => ApexSerializerHelper.ApexSerializerHelper.Serialize(_messageAp);
 }
