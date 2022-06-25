@@ -1,4 +1,5 @@
-﻿using BenchmarkDotNet.Running;
+﻿using System.Runtime.InteropServices;
+using BenchmarkDotNet.Running;
 using SerializerBenchmarks;
 using SerializerBenchmarks.CustomSerializer;
 
@@ -20,21 +21,18 @@ using SerializerBenchmarks.CustomSerializer;
 //   }
 //};
 
-//var size = GetSize(message.Body);
 
-//Console.WriteLine("DONE");
-
-
-//unsafe int GetSize(object obj)
-//{
-//    RuntimeTypeHandle th = obj.GetType().TypeHandle;
-//    return *(*(int**)&th + 1);
-//}
 
 //var ser = CustomSerializer.Serialize2(message);
 
 //var newMessage = CustomSerializer.Deserialize(ser);
 
+//Console.WriteLine("DONE");
+
+
+//var str = new string[] { "toto", "titi" };
+
+//var res = str.StringJoin();
 
 
 var summary = BenchmarkRunner.Run<FlatBuffers_Vs_Protobuf_Vs_Utf8Json>();

@@ -20,6 +20,21 @@ namespace SerializerBenchmarks.CustomSerializer
             return sb.ToString();
         }
 
+
+        public static string Serialize2(MessageCust messageCust)
+        {
+            string result = "";
+
+            foreach (var it in messageCust.Body)
+            {
+                var input = new string[] { result, it.Key, ":", it.Value, "|" };
+                result = input.StringJoin();
+            }
+
+            return result;
+        }
+
+
         public static MessageCust Deserialize(string buffer)
         {
             var fields = buffer.Split('|');
