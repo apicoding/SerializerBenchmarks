@@ -7,121 +7,122 @@ using SerializerBenchmarks.ProtobufSerializer;
 using SerializerBenchmarks.Utf8JsonSerializer;
 using SerializerBenchmarks.ZeroFormatterSerializer;
 
-namespace SerializerBenchmarks;
-
-[SimpleJob(RuntimeMoniker.Net60)]
-[RPlotExporter]
-public class FlatBuffers_Vs_Protobuf_Vs_Utf8Json
+namespace SerializerBenchmarks
 {
-    private MessageFb _messageFb;
-    private MessagePb _messagePb;
-    private MessageUj _messageUj;
-    private MessageBin _messageBin;
-    private MessageZf _messageZf;
-    private MessageAp _messageAp;
-
-    [GlobalSetup]
-    public void Setup()
+    [SimpleJob(RuntimeMoniker.Net60)]
+    [RPlotExporter]
+    public class FlatBuffers_Vs_Protobuf_Vs_Utf8Json
     {
-        // FlatBuffers message
-        _messageFb = new()
+        private MessageFb _messageFb;
+        private MessagePb _messagePb;
+        private MessageUj _messageUj;
+        private MessageBin _messageBin;
+        private MessageZf _messageZf;
+        private MessageAp _messageAp;
+
+        [GlobalSetup]
+        public void Setup()
         {
-            Id = 1,
-            Source = "XLTST",
-            Symbol = "EUR=",
-
-            Body = new List<FieldFb>
+            // FlatBuffers message
+            _messageFb = new()
             {
-                new() { Name = "key1", Value = "value1" },
-                new() { Name = "key2", Value = "value2" }
-            }
-        };
+                Id = 1,
+                Source = "XLTST",
+                Symbol = "EUR=",
 
-        // Protobuf-net message
-        _messagePb = new()
-        {
-            Id = 1,
-            Source = "XLTST",
-            Symbol = "EUR=",
+                Body = new List<FieldFb>
+                {
+                    new() { Name = "key1", Value = "value1" },
+                    new() { Name = "key2", Value = "value2" }
+                }
+            };
 
-            Body = new Dictionary<string, string>()
+            // Protobuf-net message
+            _messagePb = new()
             {
-                { "key1", "value1" },
-                { "key2", "value2" }
-            }
-        };
+                Id = 1,
+                Source = "XLTST",
+                Symbol = "EUR=",
 
-        _messageUj = new()
-        {
-            Id = 1,
-            Source = "XLTST",
-            Symbol = "EUR=",
+                Body = new Dictionary<string, string>()
+                {
+                    { "key1", "value1" },
+                    { "key2", "value2" }
+                }
+            };
 
-            Body = new Dictionary<string, string>()
+            _messageUj = new()
             {
-                { "key1", "value1" },
-                { "key2", "value2" }
-            }
-        };
+                Id = 1,
+                Source = "XLTST",
+                Symbol = "EUR=",
 
-        _messageBin = new()
-        {
-            Id = 1,
-            Source = "XLTST",
-            Symbol = "EUR=",
+                Body = new Dictionary<string, string>()
+                {
+                    { "key1", "value1" },
+                    { "key2", "value2" }
+                }
+            };
 
-            Body = new Dictionary<string, string>()
+            _messageBin = new()
             {
-                { "key1", "value1" },
-                { "key2", "value2" }
-            }
-        };
+                Id = 1,
+                Source = "XLTST",
+                Symbol = "EUR=",
 
-        _messageZf = new()
-        {
-            Id = 1,
-            Source = "XLTST",
-            Symbol = "EUR=",
+                Body = new Dictionary<string, string>()
+                {
+                    { "key1", "value1" },
+                    { "key2", "value2" }
+                }
+            };
 
-            Body = new List<FieldZf>
+            _messageZf = new()
             {
-                new() { Name = "key1", Value = "value1" },
-                new() { Name = "key2", Value = "value2" }
-            }
-        };
+                Id = 1,
+                Source = "XLTST",
+                Symbol = "EUR=",
 
-        // Apex
-        ApexSerializerHelper.ApexSerializerHelper.Initialize();
+                Body = new List<FieldZf>
+                {
+                    new() { Name = "key1", Value = "value1" },
+                    new() { Name = "key2", Value = "value2" }
+                }
+            };
 
-        _messageAp = new()
-        {
-            Id = 1,
-            Source = "XLTST",
-            Symbol = "EUR=",
+            // Apex
+            ApexSerializerHelper.ApexSerializerHelper.Initialize();
 
-            Body = new Dictionary<string, string>()
+            _messageAp = new()
             {
-                { "key1", "value1" },
-                { "key2", "value2" }
-            }
-        };
+                Id = 1,
+                Source = "XLTST",
+                Symbol = "EUR=",
+
+                Body = new Dictionary<string, string>()
+                {
+                    { "key1", "value1" },
+                    { "key2", "value2" }
+                }
+            };
+        }
+
+        [Benchmark]
+        public byte[] FbSerialize() => FlatBuffersSerializer.FlatBuffersSerializer.Serialize(_messageFb);
+
+        [Benchmark]
+        public byte[] PbSerialize() => ProtobufSerializer.ProtobufSerializer.Serialize(_messagePb);
+
+        [Benchmark]
+        public byte[] UjSerialize() => Utf8JsonSerializer.Utf8JsonSerializer.Serialize(_messageUj);
+
+        [Benchmark]
+        public byte[] BinSerialize() => BinPackSerializer.BinPackSerializer.Serialize(_messageBin);
+
+        [Benchmark]
+        public byte[] ZeroSerialize() => ZeroFormatterSerializerHelper.Serialize(_messageZf);
+
+        [Benchmark]
+        public byte[] ApexSerialize() => ApexSerializerHelper.ApexSerializerHelper.Serialize(_messageAp);
     }
-
-    [Benchmark]
-    public byte[] FbSerialize() => FlatBuffersSerializer.FlatBuffersSerializer.Serialize(_messageFb);
-
-    [Benchmark]
-    public byte[] PbSerialize() => ProtobufSerializer.ProtobufSerializer.Serialize(_messagePb);
-
-    [Benchmark]
-    public byte[] UjSerialize() => Utf8JsonSerializer.Utf8JsonSerializer.Serialize(_messageUj);
-
-    [Benchmark]
-    public byte[] BinSerialize() => BinPackSerializer.BinPackSerializer.Serialize(_messageBin);
-
-    [Benchmark]
-    public byte[] ZeroSerialize() => ZeroFormatterSerializerHelper.Serialize(_messageZf);
-
-    [Benchmark]
-    public byte[] ApexSerialize() => ApexSerializerHelper.ApexSerializerHelper.Serialize(_messageAp);
 }

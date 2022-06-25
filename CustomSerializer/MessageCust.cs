@@ -1,6 +1,6 @@
-﻿namespace SerializerBenchmarks.ApexSerializerHelper
+﻿namespace SerializerBenchmarks.CustomSerializer
 {
-    public class MessageAp
+    public class MessageCust
     {
         public int Id { get; set; }
         public string Source { get; set; }
