@@ -4,7 +4,8 @@ namespace SerializerBenchmarks.CustomSerializer;
 
 public static class CustomSerializer
 {
-    private const char Separator = (char)0x1E;
+    private const char GroupSeparator = (char)0x1D;
+    private const char RecordSeparator = (char)0x1E;
 
     public static string Serialize(MessageCust messageCust)
     {
@@ -13,9 +14,9 @@ public static class CustomSerializer
         foreach (var it in messageCust.Body)
         {
             sb.Append(it.Key);
-            sb.Append(':');
+            sb.Append(RecordSeparator);
             sb.Append(it.Value);
-            sb.Append(Separator);
+            sb.Append(GroupSeparator);
         }
 
         return sb.ToString();
@@ -23,7 +24,7 @@ public static class CustomSerializer
 
     public static MessageCust Deserialize(string buffer)
     {
-        var fields = buffer.Split(Separator);
+        var fields = buffer.Split(GroupSeparator);
         var messageCust = new MessageCust();
         messageCust.Body = new Dictionary<string, string>();
 
@@ -31,13 +32,7 @@ public static class CustomSerializer
         {
             if (!string.IsNullOrEmpty(field))
             {
-                var kv = field.Split(':', 2);
-
-                if (kv.Length != 2)
-                {
-                    return null;
-                }
-
+                var kv = field.Split(RecordSeparator);
                 messageCust.Body.Add(kv[0], kv[1]);
             }
         }
