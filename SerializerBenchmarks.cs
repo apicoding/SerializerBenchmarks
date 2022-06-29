@@ -31,15 +31,15 @@ namespace SerializerBenchmarks
                 Body = new List<FieldFb>
                 {
                     new() { Name = "key1", Value = "value1" },
-                    new() { Name = "key2", Value = "value2" },
-                    new() { Name = "key3", Value = "value3" },
-                    new() { Name = "key4", Value = "value4" },
-                    new() { Name = "key5", Value = "value5" },
-                    new() { Name = "key6", Value = "value6" },
-                    new() { Name = "key7", Value = "value7" },
-                    new() { Name = "key8", Value = "value8" },
-                    new() { Name = "key9", Value = "value9" },
-                    new() { Name = "key10", Value = "value10" }
+                    //new() { Name = "key2", Value = "value2" },
+                    //new() { Name = "key3", Value = "value3" },
+                    //new() { Name = "key4", Value = "value4" },
+                    //new() { Name = "key5", Value = "value5" },
+                    //new() { Name = "key6", Value = "value6" },
+                    //new() { Name = "key7", Value = "value7" },
+                    //new() { Name = "key8", Value = "value8" },
+                    //new() { Name = "key9", Value = "value9" },
+                    //new() { Name = "key10", Value = "value10" }
                 }
             };
 
@@ -49,15 +49,15 @@ namespace SerializerBenchmarks
                 Body = new Dictionary<string, string>()
                 {
                     { "key1", "value1" },
-                    { "key2", "value2" },
-                    { "key3", "value1" },
-                    { "key4", "value2" },
-                    { "key5", "value1" },
-                    { "key6", "value2" },
-                    { "key7", "value1" },
-                    { "key8", "value2" },
-                    { "key9", "value1" },
-                    { "key10", "value2" }
+                    //{ "key2", "value2" },
+                    //{ "key3", "value1" },
+                    //{ "key4", "value2" },
+                    //{ "key5", "value1" },
+                    //{ "key6", "value2" },
+                    //{ "key7", "value1" },
+                    //{ "key8", "value2" },
+                    //{ "key9", "value1" },
+                    //{ "key10", "value2" }
                 }
             };
 
@@ -66,15 +66,15 @@ namespace SerializerBenchmarks
                 Body = new Dictionary<string, string>()
                 {
                     { "key1", "value1" },
-                    { "key2", "value2" },
-                    { "key3", "value1" },
-                    { "key4", "value2" },
-                    { "key5", "value1" },
-                    { "key6", "value2" },
-                    { "key7", "value1" },
-                    { "key8", "value2" },
-                    { "key9", "value1" },
-                    { "key10", "value2" }
+                    //{ "key2", "value2" },
+                    //{ "key3", "value1" },
+                    //{ "key4", "value2" },
+                    //{ "key5", "value1" },
+                    //{ "key6", "value2" },
+                    //{ "key7", "value1" },
+                    //{ "key8", "value2" },
+                    //{ "key9", "value1" },
+                    //{ "key10", "value2" }
                 }
             };
 
@@ -83,15 +83,15 @@ namespace SerializerBenchmarks
                 Body = new Dictionary<string, string>()
                 {
                     { "key1", "value1" },
-                    { "key2", "value2" },
-                    { "key3", "value1" },
-                    { "key4", "value2" },
-                    { "key5", "value1" },
-                    { "key6", "value2" },
-                    { "key7", "value1" },
-                    { "key8", "value2" },
-                    { "key9", "value1" },
-                    { "key10", "value2" }
+                    //{ "key2", "value2" },
+                    //{ "key3", "value1" },
+                    //{ "key4", "value2" },
+                    //{ "key5", "value1" },
+                    //{ "key6", "value2" },
+                    //{ "key7", "value1" },
+                    //{ "key8", "value2" },
+                    //{ "key9", "value1" },
+                    //{ "key10", "value2" }
                 }
             };
 
@@ -100,15 +100,15 @@ namespace SerializerBenchmarks
                 Body = new List<FieldZf>
                 {
                     new() { Name = "key1", Value = "value1" },
-                    new() { Name = "key2", Value = "value2" },
-                    new() { Name = "key3", Value = "value3" },
-                    new() { Name = "key4", Value = "value4" },
-                    new() { Name = "key5", Value = "value5" },
-                    new() { Name = "key6", Value = "value6" },
-                    new() { Name = "key7", Value = "value7" },
-                    new() { Name = "key8", Value = "value8" },
-                    new() { Name = "key9", Value = "value9" },
-                    new() { Name = "key10", Value = "value10" }
+                    //new() { Name = "key2", Value = "value2" },
+                    //new() { Name = "key3", Value = "value3" },
+                    //new() { Name = "key4", Value = "value4" },
+                    //new() { Name = "key5", Value = "value5" },
+                    //new() { Name = "key6", Value = "value6" },
+                    //new() { Name = "key7", Value = "value7" },
+                    //new() { Name = "key8", Value = "value8" },
+                    //new() { Name = "key9", Value = "value9" },
+                    //new() { Name = "key10", Value = "value10" }
                 }
             };
 
@@ -120,15 +120,15 @@ namespace SerializerBenchmarks
                 Body = new Dictionary<string, string>()
                 {
                     { "key1", "value1" },
-                    { "key2", "value2" },
-                    { "key3", "value1" },
-                    { "key4", "value2" },
-                    { "key5", "value1" },
-                    { "key6", "value2" },
-                    { "key7", "value1" },
-                    { "key8", "value2" },
-                    { "key9", "value1" },
-                    { "key10", "value2" }
+                    //{ "key2", "value2" },
+                    //{ "key3", "value1" },
+                    //{ "key4", "value2" },
+                    //{ "key5", "value1" },
+                    //{ "key6", "value2" },
+                    //{ "key7", "value1" },
+                    //{ "key8", "value2" },
+                    //{ "key9", "value1" },
+                    //{ "key10", "value2" }
                 }
             };
 
@@ -138,15 +138,15 @@ namespace SerializerBenchmarks
                 Body = new Dictionary<string, string>()
                 {
                     { "key1", "value1" },
-                    { "key2", "value2" },
-                    { "key3", "value1" },
-                    { "key4", "value2" },
-                    { "key5", "value1" },
-                    { "key6", "value2" },
-                    { "key7", "value1" },
-                    { "key8", "value2" },
-                    { "key9", "value1" },
-                    { "key10", "value2" }
+                    //{ "key2", "value2" },
+                    //{ "key3", "value1" },
+                    //{ "key4", "value2" },
+                    //{ "key5", "value1" },
+                    //{ "key6", "value2" },
+                    //{ "key7", "value1" },
+                    //{ "key8", "value2" },
+                    //{ "key9", "value1" },
+                    //{ "key10", "value2" }
                 }
             };
         }
