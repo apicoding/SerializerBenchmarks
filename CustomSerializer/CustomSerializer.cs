@@ -1,61 +1,47 @@
-﻿
-using System.Text;
+﻿using System.Text;
 
-namespace SerializerBenchmarks.CustomSerializer
+namespace SerializerBenchmarks.CustomSerializer;
+
+public static class CustomSerializer
 {
-    public static class CustomSerializer
+    private const char Separator = (char)0x1E;
+
+    public static string Serialize(MessageCust messageCust)
     {
-        public static string Serialize(MessageCust messageCust)
+        var sb = new StringBuilder();
+
+        foreach (var it in messageCust.Body)
         {
-            var sb = new StringBuilder();
-
-            foreach (var it in messageCust.Body)
-            {
-                sb.Append(it.Key);
-                sb.Append(':');
-                sb.Append(it.Value);
-                sb.Append('|');
-            }
-
-            return sb.ToString();
+            sb.Append(it.Key);
+            sb.Append(':');
+            sb.Append(it.Value);
+            sb.Append(Separator);
         }
 
+        return sb.ToString();
+    }
 
-        public static string Serialize2(MessageCust messageCust)
+    public static MessageCust Deserialize(string buffer)
+    {
+        var fields = buffer.Split(Separator);
+        var messageCust = new MessageCust();
+        messageCust.Body = new Dictionary<string, string>();
+
+        foreach (var field in fields)
         {
-            string result = "";
-
-            foreach (var it in messageCust.Body)
+            if (!string.IsNullOrEmpty(field))
             {
-                var input = new string[] { result, it.Key, ":", it.Value, "|" };
-                result = input.StringJoin();
-            }
+                var kv = field.Split(':', 2);
 
-            return result;
-        }
-
-
-        public static MessageCust Deserialize(string buffer)
-        {
-            var fields = buffer.Split('|');
-            var messageCust = new MessageCust();
-            messageCust.Body = new Dictionary<string, string>();
-
-            foreach (var field in fields)
-            {
-                if (!string.IsNullOrEmpty(field))
+                if (kv.Length != 2)
                 {
-                    var kv = field.Split(':');
-                    messageCust.Body.Add(kv[0], kv[1]);
+                    return null;
                 }
-            }
 
-            return messageCust;
+                messageCust.Body.Add(kv[0], kv[1]);
+            }
         }
 
-
-        //private static unsafe string Serialize2(MessageCust messageCust)
-        //{
-        //}
+        return messageCust;
     }
 }

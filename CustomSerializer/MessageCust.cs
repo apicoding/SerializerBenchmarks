@@ -1,7 +1,6 @@
-﻿namespace SerializerBenchmarks.CustomSerializer
+﻿namespace SerializerBenchmarks.CustomSerializer;
+
+public class MessageCust
 {
-    public class MessageCust
-    {
-        public Dictionary<string, string> Body { get; set; }
-    }
+    public Dictionary<string, string> Body { get; set; }
 }
